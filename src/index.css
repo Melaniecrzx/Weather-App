@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme{
+  --color-neutral-900: #02012C;
+  --color-neutral-800: #262540;
+  --color-neutral-700: #302F4A;
+  --color-neutral-600: #3C3B5E;
+  --color-neutral-300: #ACACB7;
+  --color-neutral-200: #D4D3D9;
+  --color-orange-500: #FF820A;
+  --color-blue-500: #4658D9;
+  --color-blue-700: #2B1B9C
+
+  --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-bricolage: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+
+}
+html, body, #root {
+  @apply bg-neutral-900 w-full h-full overflow-x-hidden;
+}
+
+@layer utilities {
+  .font1 {
+    font-size: 96px;
+    font-weight: 500;
+    letter-spacing: -2px;
+  }
+  .font2 {
+    font-size: 52px;
+    line-height: 120%;
+    font-weight: 700;
+  }
+  .font4 {
+    font-size: 28px;
+    line-height: 120%;
+    font-weight: 600;
+
+  }
+}
