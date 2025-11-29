@@ -18,7 +18,9 @@ const router = createBrowserRouter([
       { path: "/favorite", element: <Suspense><Favorite /></Suspense> },
     ],
   },
-])
+],{
+  basename: "/Weather-App"
+});
 
 function App() {
 
