@@ -28,7 +28,7 @@ export default function DailyForecast() {
                         <p className="font6 text-white">{forecast.date}</p>
                         <img src={getWeatherIcon(forecast.weatherCode)}
                             alt="Weather Icon"
-                            className="w-15 h-15" />
+                            className="w-15 h-15 mx-auto" />
                         <div className="flex justify-between">
                             <p className="font6 text-white">{forecast.tempMax}</p>
                             <p className="font7 text-neutral-200">{forecast.tempMin}</p>
