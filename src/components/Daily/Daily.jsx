@@ -10,7 +10,6 @@ export default function Daily() {
     const { weatherData, loading, error, city, country } = useContext(WeatherContext);
     const {formatTemp} = useUnits();
     const [currentDate, setCurrentDate] = useState(new Date());
-    console.log(weatherData);
 
     useEffect(() => {
         const interval = setInterval(() => setCurrentDate(new Date()), 1000 * 60);
@@ -19,7 +18,6 @@ export default function Daily() {
 
     const temperature = formatTemp(Math.round(weatherData.current.temperature_2m));
     const weatherCode = weatherData.current.weather_code;
-    console.log(temperature);
 
     return (
         <div className="relative">
@@ -28,7 +26,7 @@ export default function Daily() {
                 <img src={bgTodaySmall} alt='Background' className="w-full block" />
             </picture>
             <div className="absolute inset-0 z-40 flex flex-col md:flex-row items-center justify-between py-10 md:px-10 lg:px-16">
-                <div className="flex flex-col gap-3 md:items-start ">
+                <div className="flex flex-col gap-3 md:items-start md:text-left">
                     <h2 className="text-white font-sans-dm font4">{city}, {country}</h2>
                     <p className="text-white font-sans-dm">
                         {currentDate.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}

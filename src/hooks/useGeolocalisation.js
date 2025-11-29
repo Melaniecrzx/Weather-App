@@ -9,7 +9,7 @@ export const useGeolocalisation = () => {
             (position) => {
                 setLocalisation({
                     latitude: position.coords.latitude,
-                    longiture: position.coords.longitude,
+                    longitude: position.coords.longitude,
                 });
 
             },

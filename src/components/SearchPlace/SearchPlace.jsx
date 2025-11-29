@@ -10,7 +10,7 @@ export default function SearchPlace() {
     const [searchCity, setSearchCity] = useState('');
     const [url, setUrl] = useState(null);
     const { data, loading } = useFetch(url);
-    const { setLocation } = useContext(WeatherContext);
+    const { setLocation, refetch } = useContext(WeatherContext);
     const [showResults, setShowResults] = useState(false);
     const [selectedCity, setSelectedCity] = useState(null);
     const [reverseGeoUrl, setReverseGeoUrl] = useState(null);
@@ -53,29 +53,39 @@ export default function SearchPlace() {
             city: selectedCity.name,
             country: selectedCity.country,
         });
+        refetch();
     }
 
     const handleUseLocation = () => {
-        if (location) {
-            setReverseGeoUrl(
-                `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${localisation.latitude}&longitude=${localisation.longitude}&localityLanguage=en`
-            );
+        console.log('Localisation:', localisation);
+        console.log('Latitude:', localisation.latitude);
+        console.log('Longitude:', localisation.longitude);
+
+        if (localisation) {
+            const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${localisation.latitude}&longitude=${localisation.longitude}&localityLanguage=en`;
+            console.log('URL de géocodage inverse:', url);
+            setReverseGeoUrl(url);
         }
     }
 
     useEffect(() => {
-        if (reverseGeoUrl && localisation) {
+        console.log('=== useEffect déclenché ===');
+        console.log('reverseGeoData:', reverseGeoData);
+        console.log('reverseGeoUrl:', reverseGeoUrl);
+        console.log('localisation:', localisation);
+        if (reverseGeoData && reverseGeoUrl && localisation) {
             setLocation({
                 latitude: localisation.latitude,
                 longitude: localisation.longitude,
                 city: reverseGeoData.city,
                 country: reverseGeoData.countryName,
             });
+            refetch();
             setSearchCity('');
             setSelectedCity(null);
             setReverseGeoUrl(null);
         }
-    }, [reverseGeoData, localisation, setLocation]);
+    }, [reverseGeoData, localisation, setLocation, refetch]);
 
     return (
         <div className="flex flex-col gap-2.5 lg:w-[656px] lg:mx-auto relative">
@@ -104,7 +114,7 @@ export default function SearchPlace() {
                     onClick={handleUseLocation}
 
                 >
-                    <img src={geoIcon} alt="geo Icon" className="w-8"/>
+                    <img src={geoIcon} alt="geo Icon" className="w-8" />
                 </button>
 
             </div>

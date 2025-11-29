@@ -50,7 +50,6 @@ export default function HourlyForecast() {
         hours: data.hours,
     }));
 
-    console.log(dailyForecasts);
 
     return (
         <div className="text-white  h-[730px] bg-neutral-800 rounded-xl p-6 flex flex-col gap-4 w-full md:max-w-[720px] lg:max-w-[384px]">
