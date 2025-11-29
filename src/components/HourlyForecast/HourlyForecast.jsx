@@ -54,12 +54,12 @@ export default function HourlyForecast() {
     return (
         <div className="text-white  h-[730px] bg-neutral-800 rounded-xl p-6 flex flex-col gap-4 w-full md:max-w-[720px] lg:max-w-[384px]">
             <div className="flex justify-between items-center">
-                <h2>Hourly forecast</h2>
+                <h2 className="font5">Hourly forecast</h2>
 
                 <select
                     value={showDay}
                     onChange={(e) => setShowDay(Number(e.target.value))}
-                    className="bg-neutral-700 text-white p-2 rounded-lg">
+                    className="bg-neutral-700 text-white font7 p-2 rounded-lg">
                     {dailyForecasts.map((dayForecast, dayIndex) => (
                         <option key={dayIndex} value={dayIndex}>{dayForecast.day}</option>
                     ))}
@@ -72,9 +72,9 @@ export default function HourlyForecast() {
                     <div key={hourIndex} className="flex justify-between items-center p-2 bg-neutral-700 rounded">
                         <div className="flex gap-2 items-center">
                             <img src={getWeatherIcon(hour.weatherCode)} alt='weather Icon' className="w-10 h-10" />
-                            <span>{hour.hour}</span>
+                            <span className="font5Medium">{hour.hour}</span>
                         </div>
-                        <span className="font-semibold">{hour.temperature}</span>
+                        <span className="font7">{hour.temperature}</span>
                     </div>
                 ))}
             </div>

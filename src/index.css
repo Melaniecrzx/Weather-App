@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import '@fontsource-variable/dm-sans'; /* ⚠️ Ajoutez cette ligne */
+
 
 @theme{
   --color-neutral-900: #02012C;
@@ -9,7 +11,7 @@
   --color-neutral-200: #D4D3D9;
   --color-orange-500: #FF820A;
   --color-blue-500: #4658D9;
-  --color-blue-700: #2B1B9C
+  --color-blue-700: #2B1B9C;
 
   --font-sans: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
   --font-bricolage: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
@@ -30,10 +32,41 @@ html, body, #root {
     line-height: 120%;
     font-weight: 700;
   }
+  .font3 {
+    font-size: 32px;
+    font-weight: 400;
+  }
   .font4 {
     font-size: 28px;
     line-height: 120%;
     font-weight: 600;
+  }
+  .font5 {
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 600;
+
+  }
+  .font5Medium {
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 500;
+
+  }.font6 {
+    font-size: 18px;
+    line-height: 120%;
+    font-weight: 400;
+  }
+  .font7 {
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 600;
+
+  }
+  .font8 {
+    font-size: 14px;
+    line-height: 120%;
+    font-weight: 500;
 
   }
 }

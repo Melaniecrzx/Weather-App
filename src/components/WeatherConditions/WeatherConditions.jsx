@@ -40,9 +40,9 @@ export default function WeatherConditions() {
         <div className="flex flex-col gap-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-white">
                 {conditions.map((condition, index) => (
-                    <div key={index} className="bg-neutral-800 border border-neutral-600 rounded-xl p-5">
-                        <p>{condition.label}</p>
-                        <p>{condition.value} {condition.unit}</p>
+                    <div key={index} className="bg-neutral-800 border border-neutral-600 rounded-xl p-5 text-left">
+                        <p className="text-neutral-200 font6">{condition.label}</p>
+                        <p className="text-white font3">{condition.value} {condition.unit}</p>
                     </div>
                 ))}
             </div>

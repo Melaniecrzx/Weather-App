@@ -94,7 +94,7 @@ export default function SearchPlace() {
                     <img src={searchLogo} alt="Search Logo" className="w-5 h-5" />
                     <input
                         placeholder="Search for a place..."
-                        className="text-neutral-200 focus:outline-none focus:ring-0 focus:border-0"
+                        className="text-neutral-200 font5Medium focus:outline-none focus:ring-0 focus:border-0"
                         type="text"
                         value={searchCity}
                         onChange={(e) => setSearchCity(e.target.value)}
@@ -103,7 +103,7 @@ export default function SearchPlace() {
 
 
                 <button
-                    className="bg-blue-500 text-white rounded-xl py-4 px-6 w-full md:w-[114px] cursor-pointer"
+                    className="bg-blue-500 text-white font5Mdedium rounded-xl py-4 px-6 w-full md:w-[114px] cursor-pointer"
                     onClick={handleSearch}
 
                 >
@@ -124,13 +124,13 @@ export default function SearchPlace() {
                         data.results.map((city) => (
                             <li key={`${city.latitude}-${city.longitude}`}
                                 onClick={() => handleSelectedCity(city)}
-                                className="text-neutral-200 rounded-lg px-2 py-2.5 hover:bg-neutral-600 cursor-pointer text-left w-full"
+                                className="text-neutral-200 font5Medium rounded-lg px-2 py-2.5 hover:bg-neutral-600 cursor-pointer text-left w-full"
 
                             >
                                 {city.name} - {city.country}
                             </li>
                         ))) : (
-                        <li className="text-neutral-200 rounded-lg px-2 py-2.5 hover:bg-neutral-600 cursor-pointer text-left w-full">No search result found!</li>
+                        <li className="text-neutral-200 font5Medium rounded-lg px-2 py-2.5 hover:bg-neutral-600 cursor-pointer text-left w-full">No search result found!</li>
                     )}
                 </ul>
             )}

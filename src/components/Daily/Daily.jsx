@@ -27,9 +27,9 @@ export default function Daily() {
             </picture>
             <div className="absolute inset-0 z-40 flex flex-col md:flex-row items-center justify-between py-10 md:px-10 lg:px-16">
                 <div className="flex flex-col gap-3 md:items-start md:text-left">
-                    <h2 className="text-white font-sans-dm font4">{city}, {country}</h2>
-                    <p className="text-white font-sans-dm">
-                        {currentDate.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+                    <h2 className="text-white font4">{city}, {country}</h2>
+                    <p className="text-neutral-200 font6">
+                        {currentDate.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' })}
                     </p>    
                 </div>
                 <div className="flex gap-5 items-center">
