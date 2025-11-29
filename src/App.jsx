@@ -10,29 +10,23 @@ import UnitsProvider from './context/units-context';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <Main />
-    ),
+    element: <Main />,
     children: [
-      { index: true, element: <Suspense><Home /></Suspense> },
-      { path: "/favorite", element: <Suspense><Favorite /></Suspense> },
+      { index: true, element: <Suspense fallback={<div>Loading...</div>}><Home /></Suspense> },
+      { path: "favorite", element: <Suspense fallback={<div>Loading...</div>}><Favorite /></Suspense> },
     ],
   },
-],{
-  basename: "/Weather-App"
+], {
+  basename: import.meta.env.BASE_URL  // ⚠️ Utilisez la variable d'environnement Vite
 });
 
 function App() {
-
   return (
     <UnitsProvider>
       <WeatherProvider>
         <RouterProvider router={router} />
       </WeatherProvider>
     </UnitsProvider>
-
-
-
   )
 }
 
