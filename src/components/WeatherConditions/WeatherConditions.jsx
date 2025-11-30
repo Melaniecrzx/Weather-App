@@ -49,10 +49,11 @@ export default function WeatherConditions() {
                     </div>
                 ))}
             </div>
-            <button className="bg-blue-500 text-white rounded-xl py-4 px-6 w-full cursor-pointer"
+            <button className="bg-blue-500 hover:bg-blue-700 text-white rounded-xl py-4 px-6 w-full cursor-pointer"
                 onClick={handleDetails}>
                 {showDetails ? 'Hide Details' : 'Show All Details'}
             </button>
+            <div className={`transition-opacity ease-in-out duration-300 ${showDetails ? 'opacity-100' : 'opacity-0'}`}>
 
             {showDetails && (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-white">
@@ -64,6 +65,8 @@ export default function WeatherConditions() {
                     ))}
                 </div>
             )}
+            </div>
+
         </div>
 
     )
