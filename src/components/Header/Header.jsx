@@ -10,8 +10,8 @@ export default function Header() {
 
     useEffect(() => {
         function handleClickOutside(event) {
-            if(unitRef.current && !unitRef.current.contains(event.target)) setShowUnits(false);
-        } if(showUnits) {
+            if (unitRef.current && !unitRef.current.contains(event.target)) setShowUnits(false);
+        } if (showUnits) {
             document.addEventListener('mousedown', handleClickOutside);
         }
         return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -31,12 +31,15 @@ export default function Header() {
                     <img src={unitIcon} alt="Unit Icon" className="w-4 h-4" />
                     <p className="text-white">Units</p>
                     <div ref={unitRef} className="relative">
-                        <button className='cursor-pointer'  onClick={handleUnits}>
-                            <img src={dropDownIcon} alt="DropDown Icon" className="w-3 h-[18px]" />
+                        <button className='cursor-pointer' onClick={handleUnits}>
+                            <img src={dropDownIcon} alt="DropDown Icon" className={`w-3 h-[18px] transition-transform ${showUnits ? 'rotate-180' : ''}`} />
                         </button>
-                        {showUnits &&
-                            <Units />
-                        }
+                        <div className={`transition-opacity ease-in-out duration-300 ${showUnits ? 'opacity-100' : 'opacity-0'}`}>
+                            {showUnits &&
+                                <Units />
+                            }
+                        </div>
+
                     </div>
 
 

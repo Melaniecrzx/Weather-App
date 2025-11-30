@@ -92,8 +92,8 @@ export default function HourlyForecast() {
                             className={`w-3 h-[18px] transition-transform ${isOpen ? 'rotate-180' : ''}`} 
                         />
                     </button>
-
-                    {isOpen && (
+                    <div className={`transition-opacity ease-in-out duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+                        {isOpen && (
                         <div className="absolute right-0 mt-2 bg-neutral-700 rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px] max-h-[300px] overflow-y-auto">
                             {dailyForecasts.map((dayForecast, dayIndex) => (
                                 <button 
@@ -112,6 +112,8 @@ export default function HourlyForecast() {
                             ))}
                         </div>
                     )}
+                    </div>
+                    
                 </div>
             </div>
 
