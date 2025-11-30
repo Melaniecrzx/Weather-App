@@ -31,7 +31,7 @@ html, body, #root {
 }
 
 .animate-grow-shrink {
-  animation: grow-shrink 1.5s infinite;
+  animation: grow-shrink 1.5s ease-in-out infinite;
 }
 
 @layer utilities {

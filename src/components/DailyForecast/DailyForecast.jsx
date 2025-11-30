@@ -8,6 +8,7 @@ export default function DailyForecast() {
     const { weatherData } = useContext(WeatherContext);
     const { formatTemp } = useUnits();
 
+    if(!weatherData) return null;
 
     const { daily } = weatherData;
 

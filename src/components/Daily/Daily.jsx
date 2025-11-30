@@ -2,13 +2,13 @@ import bgTodayLarge from "../../assets/images/bg-today-large.svg";
 import bgTodaySmall from "../../assets/images/bg-today-small.svg"
 import { useContext } from "react";
 import { WeatherContext } from "../../context/weather-context";
-import { useUnits} from '../../hooks/useUnits';
+import { useUnits } from '../../hooks/useUnits';
 import { useState, useEffect } from "react";
 import { getWeatherIcon } from "../../utils/weatherUtils";
 
 export default function Daily() {
     const { weatherData, loading, error, city, country } = useContext(WeatherContext);
-    const {formatTemp} = useUnits();
+    const { formatTemp } = useUnits();
     const [currentDate, setCurrentDate] = useState(new Date());
 
     useEffect(() => {
@@ -20,14 +20,23 @@ export default function Daily() {
     const weatherCode = weatherData.current.weather_code;
 
     return (
-        <div className="relative">
-            <picture className="relative overflow-hidden block"> 
-                <source media="(min-width: 768px)" srcSet={bgTodayLarge} />
-                <img src={bgTodaySmall} alt='Background' className="w-full block" />
-            </picture>
+        <div className="w-[336px] h-68 
+                md:w-[720px] md:h-71.5 
+                rounded-2xl overflow-hidden relative mx-auto">
+            <img
+                src={bgTodaySmall}
+                alt="Background"
+                className="absolute inset-0 w-full h-full object-cover md:hidden"
+            />
+            <img
+                src={bgTodayLarge}
+                alt="Background"
+                className="hidden md:block absolute inset-0 w-full h-full object-cover"
+            />
+
             <div className="absolute inset-0 z-40 flex flex-col md:flex-row items-center justify-between py-10 md:px-10 lg:px-16">
                 <div className="flex flex-col gap-3 md:items-start md:text-left">
-                    <h2 className="text-white font4">{city}, {country}</h2>
+                    <h2 className="text-white font4 wrap-break-word max-w-full">{city}, {country}</h2>
                     <p className="text-neutral-200 font6">
                         {currentDate.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' })}
                     </p>    
@@ -37,6 +46,7 @@ export default function Daily() {
                     <p className="text-white italic font1">{temperature}</p>
                 </div>
             </div>
+            
         </div>
     )
 }

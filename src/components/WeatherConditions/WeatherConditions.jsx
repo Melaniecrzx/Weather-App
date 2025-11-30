@@ -10,6 +10,9 @@ export default function WeatherConditions() {
     const { formatTemp, formatSpeed, formatPrecipitation } = useUnits();
 
 
+    if (!weatherData) return null;
+
+
     const handleDetails = () => {
         setShowDetails(!showDetails);
     }

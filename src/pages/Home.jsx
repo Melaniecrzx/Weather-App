@@ -25,7 +25,7 @@ export default function Home() {
                     {error && !loading && (
                         <p>No search result found!</p>
                     )}
-                    <div className="flex flex-col lg:flex-row gap-8 justify-center">
+                    <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start justify-center">
 
                         <div className="flex flex-col gap-8 lg:gap-12">
                             <div className="flex flex-col gap-5 lg:gap-8">
