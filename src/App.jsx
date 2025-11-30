@@ -6,18 +6,19 @@ const Home = lazy(() => import("./pages/Home"));
 const Favorite = lazy(() => import("./pages/Favorite"));
 import WeatherProvider from './context/weather-context';
 import UnitsProvider from './context/units-context';
+import Loading from './components/Loading/Loading';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     children: [
-      { index: true, element: <Suspense fallback={<div>Loading...</div>}><Home /></Suspense> },
-      { path: "favorite", element: <Suspense fallback={<div>Loading...</div>}><Favorite /></Suspense> },
+      { index: true, element: <Suspense fallback={<Loading />}><Home /></Suspense> },
+      { path: "favorite", element: <Suspense fallback={<Loading />}><Favorite /></Suspense> },
     ],
   },
 ], {
-  basename: import.meta.env.BASE_URL  // ⚠️ Utilisez la variable d'environnement Vite
+  basename: import.meta.env.BASE_URL  
 });
 
 function App() {

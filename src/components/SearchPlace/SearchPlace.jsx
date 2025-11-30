@@ -1,7 +1,7 @@
 import { useFetch } from "../../hooks/useFetch"
 import searchLogo from "../../assets/images/icon-search.svg";
 import geoIcon from "../../assets/images/icon-geolocation.png";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useContext } from "react";
 import { WeatherContext } from "../../context/weather-context";
 import { useGeolocalisation } from "../../hooks/useGeolocalisation.js"
@@ -47,6 +47,7 @@ export default function SearchPlace() {
 
     const handleSearch = () => {
         if (!selectedCity) return;
+        console.log(selectedCity)
         setLocation({
             latitude: selectedCity.latitude,
             longitude: selectedCity.longitude,
@@ -56,23 +57,21 @@ export default function SearchPlace() {
         refetch();
     }
 
-    const handleUseLocation = () => {
-        console.log('Localisation:', localisation);
-        console.log('Latitude:', localisation.latitude);
-        console.log('Longitude:', localisation.longitude);
+    const handleEnter = (e) => {
+        if(e.key === 'Enter') {
+            if(selectedCity) handleSearch();
+            else if (data?.results?.length>0) handleSelectedCity(data.results[0]);
+        }
+    } 
 
+    const handleUseLocation = () => {
         if (localisation) {
             const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${localisation.latitude}&longitude=${localisation.longitude}&localityLanguage=en`;
-            console.log('URL de géocodage inverse:', url);
             setReverseGeoUrl(url);
         }
     }
 
     useEffect(() => {
-        console.log('=== useEffect déclenché ===');
-        console.log('reverseGeoData:', reverseGeoData);
-        console.log('reverseGeoUrl:', reverseGeoUrl);
-        console.log('localisation:', localisation);
         if (reverseGeoData && reverseGeoUrl && localisation) {
             setLocation({
                 latitude: localisation.latitude,
@@ -98,19 +97,20 @@ export default function SearchPlace() {
                         type="text"
                         value={searchCity}
                         onChange={(e) => setSearchCity(e.target.value)}
+                        onKeyDown={handleEnter}
                     />
                 </div>
 
 
                 <button
-                    className="bg-blue-500 text-white font5Mdedium rounded-xl py-4 px-6 w-full md:w-[114px] cursor-pointer"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font5Mdedium rounded-xl py-4 px-6 w-full md:w-[114px] cursor-pointer"
                     onClick={handleSearch}
 
                 >
                     Search
                 </button>
                 <button
-                    className="bg-blue-500 text-white rounded-xl py-4 px-6 md:w-[114px] cursor-pointer flex items-center justify-center "
+                    className="bg-blue-500 hover:bg-blue-700 text-white rounded-xl py-4 px-6 md:w-[114px] cursor-pointer flex items-center justify-center "
                     onClick={handleUseLocation}
 
                 >

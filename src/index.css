@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import '@fontsource-variable/dm-sans'; /* ⚠️ Ajoutez cette ligne */
+@import '@fontsource-variable/dm-sans'; 
 
 
 @theme{
@@ -19,6 +19,19 @@
 }
 html, body, #root {
   @apply bg-neutral-900 w-full h-full overflow-x-hidden;
+}
+
+@keyframes grow-shrink {
+0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.animate-grow-shrink {
+  animation: grow-shrink 1.5s infinite;
 }
 
 @layer utilities {

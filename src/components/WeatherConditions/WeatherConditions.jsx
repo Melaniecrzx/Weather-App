@@ -55,8 +55,8 @@ export default function WeatherConditions() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-white">
                     {conditions2.map((condition2, index) => (
                         <div key={index} className="bg-neutral-800 border border-neutral-600 rounded-xl p-5">
-                            <p>{condition2.label}</p>
-                            <p>{condition2.value}</p>
+                            <p className="text-neutral-200 font6">{condition2.label}</p>
+                            <p className="text-white font3">{condition2.value}</p>
                         </div>
                     ))}
                 </div>
