@@ -34,11 +34,11 @@ export default function Header() {
                         <button className='cursor-pointer' onClick={handleUnits}>
                             <img src={dropDownIcon} alt="DropDown Icon" className={`w-3 h-[18px] transition-transform ${showUnits ? 'rotate-180' : ''}`} />
                         </button>
-                        <div className={`transition-opacity ease-in-out duration-300 ${showUnits ? 'opacity-100' : 'opacity-0'}`}>
-                            {showUnits &&
-                                <Units />
-                            }
-                        </div>
+
+                        {showUnits &&
+                            <Units />
+                        }
+
 
                     </div>
 
